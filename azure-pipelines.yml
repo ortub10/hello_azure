@@ -49,7 +49,7 @@ steps:
 - task: SonarQubePublish@6
   condition: eq(variables['Build.SourceBranch'], 'feature')
   inputs:
-    SonarQube: 'SonarQubeConnection
+    SonarQube: 'SonarQubeConnection'
     pollingTimeoutSec: '300'
 
 
