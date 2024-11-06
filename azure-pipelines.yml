@@ -41,7 +41,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-    arguments: '--output $(Build.ArtifactStagingDirectory) /p:PackageVersion=1.0.1'
+    arguments: '--output $(Build.ArtifactStagingDirectory) -p:PackageVersion=1.0.1'
 
 - task: DotNetCoreCLI@2
   inputs:
