@@ -35,11 +35,6 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    artifactName: 'helloAzure'
-    publishLocation: 'Container'
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
   inputs:
