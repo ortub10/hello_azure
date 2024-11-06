@@ -11,6 +11,13 @@ trigger:
 pool:
   name: githubAgent
 
+variables:
+  Major: "1"
+  Minor: "0"
+  Patch: $(Build.BuildId)
+  buildVersion: "$(Major).$(Minor).$(Patch)"  
+  
+
 steps:
 - task: UseDotNet@2
   inputs:
@@ -33,9 +40,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
-    arguments: "--output $(Build.ArtifactStagingDirectory) /p:PackageId=BestHelloWorld.1.0.1"
-
+    versioningScheme: 'byBuildNumber'
+    arguments: '--output $(Build.ArtifactStagingDirectory) /p:PackageId=BestHelloWorld.$(buildVersion)'
 
 - task: DotNetCoreCLI@2
   inputs:
