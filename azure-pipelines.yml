@@ -34,7 +34,7 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  condition: eq(variables['Build.SourceBranch'], 'feature')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/feature')
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'  
@@ -45,7 +45,7 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  condition: eq(variables['Build.SourceBranch'], 'feature')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/feature')
   inputs:
     command: 'publish'
     publishWebProjects: false
@@ -57,7 +57,7 @@ steps:
   displayName: "Print Version to Console"    
 
 - task: DotNetCoreCLI@2
-  condition: eq(variables['Build.SourceBranch'], 'feature')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/feature')
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
