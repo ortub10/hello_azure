@@ -39,11 +39,7 @@ steps:
     arguments: 'p:PackageId=BestHelloWorld.$(buildVersion)'
 
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'drop'
-    publishLocation: 'Container'
+
     
 - script: |
     echo "Version: $(buildVersion)"
