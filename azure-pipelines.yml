@@ -1,21 +1,16 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
   branches:
     include:
       - main 
       
 pool:
-  name: githubAgent
+  name: githubAgent  
 
 steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.x'
+    version: '8.x'  
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -38,7 +33,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    artifactName: 'drop' 
+    artifactName: 'helloAzure' 
     publishLocation: 'Container'  
     pathToPublish: '$(Build.ArtifactStagingDirectory)'  
 
