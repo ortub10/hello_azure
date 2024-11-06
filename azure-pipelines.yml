@@ -35,7 +35,7 @@ steps:
 - task: SonarQubePrepare@6
   condition: eq(variables['Build.SourceBranch'], 'feature')  
   inputs:
-    SonarQube: 'http://3.70.222.203:9000/projects'  
+    SonarQube: 'http://3.70.222.203:9000'  
     scannerMode: 'MSBuild'
     projectKey: 'azure'  
     projectName: 'azure'
@@ -44,12 +44,12 @@ steps:
 - task: SonarQubeAnalyze@6
   condition: eq(variables['Build.SourceBranch'], 'feature')
   inputs:
-    SonarQube: 'http://3.70.222.203:9000/projects'
+    SonarQube: 'http://3.70.222.203:9000'
 
 - task: SonarQubePublish@6
   condition: eq(variables['Build.SourceBranch'], 'feature')
   inputs:
-    SonarQube: 'http://3.70.222.203:9000/projects'
+    SonarQube: 'http://3.70.222.203:9000'
     pollingTimeoutSec: '300'
 
 
