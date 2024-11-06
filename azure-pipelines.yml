@@ -41,7 +41,7 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
     outputDir: '$(Build.ArtifactStagingDirectory)'
-    arguments: 'p:PackageId=BestHelloWorld.$(buildVersion)'
+    arguments: 'p:PackageId=$(Build.SourceBranchName)_$(buildVersion)'
 
 
 - task: DotNetCoreCLI@2
@@ -55,14 +55,6 @@ steps:
 - script: |
     echo "Version: $(buildVersion)"
   displayName: "Print Version to Console"    
-
-
-- task: PublishBuildArtifacts@1
-  condition: eq(variables['Build.SourceBranchName'], 'feature')  
-  inputs:
-    ArtifactName: '$(Build.SourceBranchName)_$(buildVersion)'  
-    targetPath: '$(Build.ArtifactStagingDirectory)'  
-    publishLocation: 'Container'
 
 
 
