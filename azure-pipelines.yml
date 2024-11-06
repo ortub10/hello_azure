@@ -40,7 +40,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
+    versioningScheme: 'byBuildNumber'
     arguments: '--output $(Build.ArtifactStagingDirectory) /p:PackageId=BestHelloWorld.$(buildVersion)'
 
 - task: DotNetCoreCLI@2
