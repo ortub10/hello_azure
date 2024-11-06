@@ -6,7 +6,8 @@
 trigger:
   branches:
     include:
-      - main 
+      - main
+      - feature 
 
 pool:
   name: githubAgent
@@ -27,6 +28,30 @@ steps:
 - script: |
     dotnet build --configuration Release
   displayName: 'Build the project'
+  
+  
+  
+  
+- task: SonarQubePrepare@5
+  condition: eq(variables['Build.SourceBranch'], 'feature')  
+  inputs:
+    SonarQube: 'http://3.70.222.203:9000/projects'  
+    scannerMode: 'MSBuild'
+    projectKey: 'azure'  
+    projectName: 'azure'
+   
+
+- task: SonarQubeAnalyze@5
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'http://3.70.222.203:9000/projects'
+
+- task: SonarQubePublish@5
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'http://3.70.222.203:9000/projects'
+    pollingTimeoutSec: '300'
+
 
 
 - task: DotNetCoreCLI@2
