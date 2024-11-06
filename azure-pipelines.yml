@@ -44,6 +44,10 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'drop'
     publishLocation: 'Container'
+    
+- script: |
+    echo "Version: $(buildVersion)"
+  displayName: "Print Version to Console"    
 
 - task: DotNetCoreCLI@2
   inputs:
