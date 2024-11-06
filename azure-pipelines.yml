@@ -28,8 +28,7 @@ steps:
     packagesToPack: '**/*.csproj'  
     versioningScheme: 'off' 
     outputDir: '$(Build.ArtifactStagingDirectory)'
-    arguments: '-p:PackageVersion=1.0.1'
-
+    arguments: 'p:PackageId=BestHelloWorld /p:PackageVersion=1.0.1'
 
 - task: PublishPipelineArtifact@1
   inputs:
