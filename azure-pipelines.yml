@@ -9,14 +9,13 @@ trigger:
       - main 
       
 pool:
-  name: githubAgent 
-
+  name: githubAgent
 
 steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.x' 
+    version: '8.x'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -37,9 +36,16 @@ steps:
     versioningScheme: 'off'
 
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'drop' 
+    publishLocation: 'Container'  
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'  
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'e87fdb84-f489-4d53-b849-4c54fa99d27b/42bf8ed2-8699-4fc1-8346-1400e3499e54'
+
