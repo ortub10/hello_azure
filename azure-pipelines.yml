@@ -39,7 +39,12 @@ steps:
     arguments: 'p:PackageId=BestHelloWorld.$(buildVersion)'
 
 
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/*.csproj'
+    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
     
 - script: |
     echo "Version: $(buildVersion)"
