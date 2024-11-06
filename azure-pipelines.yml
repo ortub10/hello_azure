@@ -41,7 +41,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-    arguments: '--output $(Build.ArtifactStagingDirectory) -p:PackageId=BestHelloWorld.$(buildVersion)'
+    arguments: '--output $(Build.ArtifactStagingDirectory) /p:PackageId=BestHelloWorld.$(buildVersion)'
 
 - task: DotNetCoreCLI@2
   inputs:
