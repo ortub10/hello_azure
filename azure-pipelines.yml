@@ -34,7 +34,6 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-    arguments: "--output $(Build.ArtifactStagingDirectory) /p:PackageId=ItIsHelloWorld.1.0.0"
 
 
 - task: DotNetCoreCLI@2
