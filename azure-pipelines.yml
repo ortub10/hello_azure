@@ -56,6 +56,16 @@ steps:
     echo "Version: $(buildVersion)"
   displayName: "Print Version to Console"    
 
+
+- task: PublishBuildArtifacts@1
+  condition: eq(variables['Build.SourceBranchName'], 'feature')  
+  inputs:
+    ArtifactName: '$(Build.SourceBranchName)_$(buildVersion)'  
+    targetPath: '$(Build.ArtifactStagingDirectory)'  
+    publishLocation: 'Container'
+
+
+
 - task: DotNetCoreCLI@2
   condition: eq(variables['Build.SourceBranchName'], 'feature')
   inputs:
