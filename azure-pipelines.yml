@@ -40,8 +40,8 @@ steps:
     packagesToPack: '**/*.csproj'  
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
-    outputDir: '$(Build.ArtifactStagingDirectory)'
-    arguments: 'p:PackageId=$(Build.SourceBranchName)_$(buildVersion)'
+  #  outputDir: '$(Build.ArtifactStagingDirectory)'
+  #  arguments: 'p:PackageId=$(Build.SourceBranchName)_$(buildVersion)'
 
 
 - task: DotNetCoreCLI@2
