@@ -16,7 +16,7 @@ variables:
   Major: "1"
   Minor: "0"
   Patch: $(Build.BuildId)
-  buildVersion: "$(Build.SourceBranchName)_$(Major).$(Minor).$(Patch)"  
+  buildVersion: "$(Major).$(Minor).$(Patch)-$(Build.SourceBranchName)"  
   
 
 steps:
