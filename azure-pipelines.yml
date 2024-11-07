@@ -66,4 +66,35 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: 'b1fdba62-71d1-4e08-8819-7560108d13fb/003c6320-d931-4821-8436-7ef7094cb2fc'
     arguments: '--skip-duplicate'
+    
+    
+    
+- task: SendGridEmail@2
+  condition: succeeded()
+  inputs:
+    SendGridApiKey: '$(SENDGRID_API_KEY)'
+    FromAddress: 'orgitlab@gmail.com'
+    ToAddresses: 'jejoleb382@opposir.com'
+    Subject: 'Pipeline Success - Azure DevOps Build'
+    emailBodyFormat: 'InLine'
+    EmailBody: |
+      Pipeline has completed successfully.
+      
+      Build Number: $(Build.BuildNumber)
+      Build ID: $(Build.BuildId)    
+      
+      
+- task: SendGridEmail@2
+  condition: failed()
+  inputs:
+    SendGridApiKey: '$(SENDGRID_API_KEY)'
+    FromAddress: 'orgitlab@gmail.com'
+    ToAddresses: 'jejoleb382@opposir.com'
+    Subject: 'Pipeline Success - Azure DevOps Build'
+    emailBodyFormat: 'InLine'
+    EmailBody: |
+      Pipeline has failed. Please check the logs for details.
+      
+      Build Number: $(Build.BuildNumber)
+      Build ID: $(Build.BuildId)      
 
