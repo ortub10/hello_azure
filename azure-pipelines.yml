@@ -29,39 +29,23 @@ steps:
 - task: UseNode@1
   inputs:
     version: '23.x'
-
-- script: |
-    dotnet build --configuration Release
-  displayName: 'Build the project'
-
-
+    
+    
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet Tool'
     
 - task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
+    
 
+- script: |
+    dotnet build --configuration Release
+  displayName: 'Build the project'
   
-- task: SonarQubePrepare@6
-  condition: eq(variables['Build.SourceBranch'], 'feature')  
-  inputs:
-    SonarQube: 'SonarQubeConnection'  
-    scannerMode: 'MSBuild'
-    projectKey: 'azure'  
-    projectName: 'azure'
-   
-
 - task: SonarQubeAnalyze@6
-  condition: eq(variables['Build.SourceBranch'], 'feature')
   inputs:
-    SonarQube: 'SonarQubeConnection'
-
-- task: SonarQubePublish@6
-  condition: eq(variables['Build.SourceBranch'], 'feature')
-  inputs:
-    SonarQube: 'SonarQubeConnection'
-    pollingTimeoutSec: '300'
-  
+    jdkversion: 'JAVA_HOME_21_X64'    
+          
 
 - task: DotNetCoreCLI@2
   condition: eq(variables['Build.SourceBranchName'], 'feature')
@@ -72,8 +56,21 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
 
-    
-        
+
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    organization: 'orgitlab'
+    projectKey: 'orgitlab_hello'
+    projectName: 'hello'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    displayName: 'Restore dependencies'
+
     
 - script: |
     echo "Version: $(buildVersion)"
