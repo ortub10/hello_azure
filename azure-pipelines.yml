@@ -57,7 +57,7 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'variables['Build.SourceBranchName']_$(buildVersion)'
+    artifactName: '$(Build.SourceBranchName)_$(buildVersion)'
     publishLocation: 'pipeline'
         
     
