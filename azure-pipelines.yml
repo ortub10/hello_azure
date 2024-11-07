@@ -16,7 +16,8 @@ variables:
   Major: "1"
   Minor: "0"
   Patch: $(Build.BuildId)
-  buildVersion: "$(Major).$(Minor).$(Patch)-$(Build.SourceBranchName)"  
+  buildVersion: "$(Major).$(Minor).$(Patch)"  
+  packageName:  "$(Major).$(Minor).$(Patch)-$(Build.SourceBranchName)"
   
 
 steps:
@@ -39,7 +40,8 @@ steps:
   condition: eq(variables['Build.SourceBranchName'], 'feature')
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'  
+    packagesToPack: '**/*.csproj'
+    buildProperties: 'PackageIdPrefix=$(packageName).'  
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
   #  outputDir: '$(Build.ArtifactStagingDirectory)'
@@ -73,32 +75,32 @@ steps:
     
     
     
-- task: SendGridEmail@2
-  condition: succeeded()
-  inputs:
-    SendGridApiKey: '$(SENDGRID_API_KEY)'
-    FromAddress: 'orgitlab@gmail.com'
-    ToAddresses: 'jejoleb382@opposir.com'
-    Subject: 'Pipeline Success - Azure DevOps Build'
-    emailBodyFormat: 'InLine'
-    EmailBody: |
-      Pipeline has completed successfully.
+#- task: SendGridEmail@2
+#  condition: succeeded()
+#  inputs:
+#    SendGridApiKey: '$(SENDGRID_API_KEY)'
+#    FromAddress: 'orgitlab@gmail.com'
+#    ToAddresses: 'jejoleb382@opposir.com'
+#    Subject: 'Pipeline Success - Azure DevOps Build'
+#    emailBodyFormat: 'InLine'
+#    EmailBody: |
+#      Pipeline has completed successfully.
+#      
+#      Build Number: $(Build.BuildNumber)
+#      Build ID: $(Build.BuildId)    
+#      
+#      
+#- task: SendGridEmail@2
+#  condition: failed()
+#  inputs:
+#    SendGridApiKey: '$(SENDGRID_API_KEY)'
+#    FromAddress: 'orgitlab@gmail.com'
+#    ToAddresses: 'jejoleb382@opposir.com'
+#    Subject: 'Pipeline Success - Azure DevOps Build'
+#    emailBodyFormat: 'InLine'
+#    EmailBody: |
+#      Pipeline has failed. Please check the logs for details.
       
-      Build Number: $(Build.BuildNumber)
-      Build ID: $(Build.BuildId)    
-      
-      
-- task: SendGridEmail@2
-  condition: failed()
-  inputs:
-    SendGridApiKey: '$(SENDGRID_API_KEY)'
-    FromAddress: 'orgitlab@gmail.com'
-    ToAddresses: 'jejoleb382@opposir.com'
-    Subject: 'Pipeline Success - Azure DevOps Build'
-    emailBodyFormat: 'InLine'
-    EmailBody: |
-      Pipeline has failed. Please check the logs for details.
-      
-      Build Number: $(Build.BuildNumber)
-      Build ID: $(Build.BuildId)      
+#      Build Number: $(Build.BuildNumber)
+#      Build ID: $(Build.BuildId)      
 
