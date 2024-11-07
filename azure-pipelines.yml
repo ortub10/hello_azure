@@ -52,24 +52,26 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
     
+    
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: '$(variables['Build.SourceBranchName'])_$(buildVersion)'
+    publishLocation: 'pipeline'
+        
+    
 - script: |
     echo "Version: $(buildVersion)"
   displayName: "Print Version to Console"    
 
-- task: PublishBuildArtifacts@1
+
+- task: DotNetCoreCLI@2
   condition: eq(variables['Build.SourceBranchName'], 'feature')
   inputs:
-    ArtifactName: '$(Build.SourceBranchName)_$(buildVersion)'
-    targetPath: '$(Build.ArtifactStagingDirectory)' 
-    publishLocation: 'Container' 
-
-
-#- task: DotNetCoreCLI@2
-#  condition: eq(variables['Build.SourceBranchName'], 'feature')
-#  inputs:
-#    command: 'push'
-#    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-#    nuGetFeedType: 'internal'
-#    publishVstsFeed: 'b1fdba62-71d1-4e08-8819-7560108d13fb/003c6320-d931-4821-8436-7ef7094cb2fc'
-#    arguments: '--skip-duplicate'
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'b1fdba62-71d1-4e08-8819-7560108d13fb/003c6320-d931-4821-8436-7ef7094cb2fc'
+    arguments: '--skip-duplicate'
 
