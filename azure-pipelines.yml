@@ -30,6 +30,25 @@ steps:
   displayName: 'Build the project'
   
   
+- task: SonarQubePrepare@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')  
+  inputs:
+    SonarQube: 'SonarQubeConnection'  
+    scannerMode: 'MSBuild'
+    projectKey: 'azure'  
+    projectName: 'azure'
+   
+
+- task: SonarQubeAnalyze@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'SonarQubeConnection'
+
+- task: SonarQubePublish@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'SonarQubeConnection'
+    pollingTimeoutSec: '300'
 
 
 
@@ -53,13 +72,6 @@ steps:
     arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
     
     
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: ${{ format('{0}_{1}', variables['Build.SourceBranchName'], variables['buildVersion']) }}
-    publishLocation: 'pipeline'
-        
     
 - script: |
     echo "Version: $(buildVersion)"
