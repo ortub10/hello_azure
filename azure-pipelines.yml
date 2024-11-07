@@ -44,18 +44,7 @@ steps:
     buildProperties: 'PackageIdPrefix=$(packageName).'  
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
-  #  outputDir: '$(Build.ArtifactStagingDirectory)'
-  #  arguments: 'p:PackageId=$(Build.SourceBranchName)_$(buildVersion)'
 
-
-- task: DotNetCoreCLI@2
-  condition: eq(variables['Build.SourceBranchName'], 'feature')
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/*.csproj'
-    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
-    
     
         
     
