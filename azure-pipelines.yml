@@ -26,8 +26,8 @@ steps:
     version: '8.x'
 
 - task: UseNode@1
-    inputs:
-      version: '23.x'
+  inputs:
+    version: '23.x'
 
 - script: |
     dotnet build --configuration Release
