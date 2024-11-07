@@ -33,7 +33,34 @@ steps:
 - script: |
     dotnet build --configuration Release
   displayName: 'Build the project'
+
+
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGet Tool'
+    
+- task: NuGetAuthenticate@1
+  displayName: 'NuGet Authenticate'
+
   
+- task: SonarQubePrepare@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')  
+  inputs:
+    SonarQube: 'SonarQubeConnection'  
+    scannerMode: 'MSBuild'
+    projectKey: 'azure'  
+    projectName: 'azure'
+   
+
+- task: SonarQubeAnalyze@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'SonarQubeConnection'
+
+- task: SonarQubePublish@6
+  condition: eq(variables['Build.SourceBranch'], 'feature')
+  inputs:
+    SonarQube: 'SonarQubeConnection'
+    pollingTimeoutSec: '300'
   
 
 - task: DotNetCoreCLI@2
