@@ -64,32 +64,30 @@ steps:
     
     
     
-#- task: SendGridEmail@2
-#  condition: succeeded()
-#  inputs:
-#    SendGridApiKey: '$(SENDGRID_API_KEY)'
-#    FromAddress: 'orgitlab@gmail.com'
-#    ToAddresses: 'jejoleb382@opposir.com'
-#    Subject: 'Pipeline Success - Azure DevOps Build'
-#    emailBodyFormat: 'InLine'
-#    EmailBody: |
-#      Pipeline has completed successfully.
-#      
-#      Build Number: $(Build.BuildNumber)
-#      Build ID: $(Build.BuildId)    
-#      
-#      
-#- task: SendGridEmail@2
-#  condition: failed()
-#  inputs:
-#    SendGridApiKey: '$(SENDGRID_API_KEY)'
-#    FromAddress: 'orgitlab@gmail.com'
-#    ToAddresses: 'jejoleb382@opposir.com'
-#    Subject: 'Pipeline Success - Azure DevOps Build'
-#    emailBodyFormat: 'InLine'
-#    EmailBody: |
-#      Pipeline has failed. Please check the logs for details.
+- task: SendGridEmail@2
+  condition: succeeded()
+ inputs:
+    SendGridApiKey: '$(SENDGRID_API_KEY)'
+    FromAddress: 'orgitlab@gmail.com'
+    ToAddresses: 'ortub10@gmail.com'
+    Subject: 'Pipeline Success - Azure DevOps Build'
+    emailBodyFormat: 'InLine'
+    EmailBody: |
+      Pipeline has completed successfully.
+      Build Number: $(Build.BuildNumber)
+      Build ID: $(Build.BuildId)    
       
-#      Build Number: $(Build.BuildNumber)
-#      Build ID: $(Build.BuildId)      
+      
+- task: SendGridEmail@2
+  condition: failed()
+  inputs:
+    SendGridApiKey: '$(SENDGRID_API_KEY)'
+    FromAddress: 'orgitlab@gmail.com'
+    ToAddresses: 'ortub10@gmail.com'
+    Subject: 'Pipeline Success - Azure DevOps Build'
+    emailBodyFormat: 'InLine'
+    EmailBody: |
+      Pipeline has failed. Please check the logs for details.
+      Build Number: $(Build.BuildNumber)
+      Build ID: $(Build.BuildId)      
 
