@@ -57,7 +57,7 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: '$(Build.SourceBranchName)_$(buildVersion)'
+    artifactName: ${{ format('{0}_{1}', variables['Build.SourceBranchName'], variables['buildVersion']) }}
     publishLocation: 'pipeline'
         
     
