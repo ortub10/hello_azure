@@ -16,7 +16,7 @@ variables:
   Major: "1"
   Minor: "0"
   Patch: $(Build.BuildId)
-  buildVersion: "S(Build.SourceBranchName)-$(Major).$(Minor).$(Patch)"  
+  buildVersion: "$(Build.SourceBranchName)-$(Major).$(Minor).$(Patch)"  
   
 
 steps:
@@ -30,8 +30,6 @@ steps:
   displayName: 'Build the project'
   
   
-
-
 
 - task: DotNetCoreCLI@2
   condition: eq(variables['Build.SourceBranchName'], 'feature')
