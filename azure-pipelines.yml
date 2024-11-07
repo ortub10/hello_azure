@@ -25,6 +25,11 @@ steps:
     packageType: 'sdk'
     version: '8.x'
 
+- task: UseJavaToolInstaller@1
+  inputs:
+    versionSpec: '11'  
+    jdkArchitecture: 'x64'
+
 - script: |
     dotnet build --configuration Release
   displayName: 'Build the project'
