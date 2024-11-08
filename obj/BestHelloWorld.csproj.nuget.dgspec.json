@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj": {}
+  },
+  "projects": {
+    "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
+        "projectName": "CustomPrefix.BestHelloWorld",
+        "projectPath": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
+        "packagesPath": "/home/ortub/.nuget/packages/",
+        "outputPath": "/home/ortub/azure_project/HelloWorld/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ortub/azure_project/HelloWorld/nuget.config",
+          "/home/ortub/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://pkgs.dev.azure.com/orgitlab/hello/_packaging/helloFeed/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/ortub/azureAgent/_work/_tool/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

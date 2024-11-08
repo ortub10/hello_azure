@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ca+k37DD87w=",
+  "dgSpecHash": "yMDKUj/5TMk=",
   "success": true,
-  "projectFilePath": "/home/ortub/git/devops/azure_project/HelloWorld/HelloWorld.csproj",
+  "projectFilePath": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

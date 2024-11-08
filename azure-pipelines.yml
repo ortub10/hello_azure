@@ -29,24 +29,61 @@ steps:
 - task: UseNode@1
   inputs:
     version: '23.x'
+    
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    organization: 'orgitlab'
+    projectKey: 'orgitlab_hello'
+    projectName: 'hello'
 
-- script: |
-    dotnet build --configuration Release
+    
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGet Tool'
+    
+- task: NuGetAuthenticate@1
+  displayName: 'NuGet Authenticate'
+  
+ 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
+    displayName: 'Restore dependencies' 
+  
+
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: "21"
+    jdkArchitectureOption: x64
+    jdkSourceOption: LocalDirectory
+    jdkFile: "/home/ortub/OpenJDK21U-jdk_x64_linux_hotspot_21.0.5_11.tar.gz"
+
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
+    arguments: '--configuration Release'
   displayName: 'Build the project'
   
-  
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_21_X64'    
+          
 
 - task: DotNetCoreCLI@2
   condition: eq(variables['Build.SourceBranchName'], 'feature')
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
     buildProperties: 'PackageIdPrefix=$(packageName).'  
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
 
-    
-        
+
     
 - script: |
     echo "Version: $(buildVersion)"
@@ -63,33 +100,17 @@ steps:
     arguments: '--skip-duplicate'
     
     
+-  script: |
+    SUBJECT="Azure DevOps Pipeline Status: $(Build.DefinitionName) - $(Build.BuildId)"
+    BODY="On $(Build.Repository.Provider) - $(Build.Repository.Name) Repository:"
+    BODY="${BODY}The build pipeline has completed with status: $(Agent.JobStatus)\n\n"
+    BODY="${BODY}Pipeline Name: $(Build.DefinitionName)\n"
+    BODY="${BODY}Branch: $(Build.SourceBranchName)\n"
+    BODY="${BODY}Go To Repo: $(Build.Repository.Uri)\n"      
+    curl -v --url 'smtp://smtp.gmail.com:587' --ssl-reqd \
+        --mail-from "$(GMAIL_USER)" --mail-rcpt "$(GMAIL_USER)" \
+        --upload-file <(echo -e "Subject: $SUBJECT\n\n$BODY") \
+        --user "$(GMAIL_USER):$(GMAIL_PASSWORD)" --insecure
+   displayName: 'Send Pipeline Status Email'
+   condition: always()
     
-#- task: SendGridEmail@2
-#  condition: succeeded()
-#  inputs:
-#    SendGridApiKey: '$(SENDGRID_API_KEY)'
-#    FromAddress: 'orgitlab@gmail.com'
-#    ToAddresses: 'jejoleb382@opposir.com'
-#    Subject: 'Pipeline Success - Azure DevOps Build'
-#    emailBodyFormat: 'InLine'
-#    EmailBody: |
-#      Pipeline has completed successfully.
-#      
-#      Build Number: $(Build.BuildNumber)
-#      Build ID: $(Build.BuildId)    
-#      
-#      
-#- task: SendGridEmail@2
-#  condition: failed()
-#  inputs:
-#    SendGridApiKey: '$(SENDGRID_API_KEY)'
-#    FromAddress: 'orgitlab@gmail.com'
-#    ToAddresses: 'jejoleb382@opposir.com'
-#    Subject: 'Pipeline Success - Azure DevOps Build'
-#    emailBodyFormat: 'InLine'
-#    EmailBody: |
-#      Pipeline has failed. Please check the logs for details.
-      
-#      Build Number: $(Build.BuildNumber)
-#      Build ID: $(Build.BuildId)      
-

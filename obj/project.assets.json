@@ -13,20 +13,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ortub/git/devops/azure_project/HelloWorld/HelloWorld.csproj",
-      "projectName": "HelloWorld",
-      "projectPath": "/home/ortub/git/devops/azure_project/HelloWorld/HelloWorld.csproj",
+      "projectUniqueName": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
+      "projectName": "CustomPrefix.BestHelloWorld",
+      "projectPath": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
       "packagesPath": "/home/ortub/.nuget/packages/",
-      "outputPath": "/home/ortub/git/devops/azure_project/HelloWorld/obj/",
+      "outputPath": "/home/ortub/azure_project/HelloWorld/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/home/ortub/azure_project/HelloWorld/nuget.config",
         "/home/ortub/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://pkgs.dev.azure.com/orgitlab/hello/_packaging/helloFeed/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -64,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/ortub/azureAgent/_work/_tool/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
