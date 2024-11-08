@@ -11,10 +11,10 @@
     "/home/ortub/.nuget/packages/": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.100",
     "restore": {
       "projectUniqueName": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
-      "projectName": "CustomPrefix.BestHelloWorld",
+      "projectName": "1.0.100-feature.BestHelloWorld",
       "projectPath": "/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj",
       "packagesPath": "/home/ortub/.nuget/packages/",
       "outputPath": "/home/ortub/azure_project/HelloWorld/obj/",
