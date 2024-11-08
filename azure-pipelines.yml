@@ -37,19 +37,14 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: "21"
-    jdkArchitectureOption: x64
-    jdkSourceOption: LocalDirectory
-    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
+#- task: JavaToolInstaller@0
+#  inputs:
+#    versionSpec: "21"
+#    jdkArchitectureOption: x64
+#    jdkSourceOption: LocalDirectory
+#    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
-- script: |
-    echo "Current directory: $(Build.SourcesDirectory)"
-    echo "Listing files in the current directory:"
-    ls -R $(Build.SourcesDirectory)
-  displayName: 'List all files in the source directory'
      
 
 - script: |
