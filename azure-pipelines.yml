@@ -42,7 +42,7 @@ steps:
     versionSpec: "21"
     jdkArchitectureOption: x64
     jdkSourceOption: LocalDirectory
-    jdkFile: "/home/ortub/azure_project/HelloWorld"
+    jdkFile: "/home/ortub/azure_project/HelloWorld/jre-8u431-linux-x64.tar.gz"
 
 
      
