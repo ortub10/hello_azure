@@ -58,7 +58,7 @@ steps:
     versionSpec: "21"
     jdkArchitectureOption: x64
     jdkSourceOption: LocalDirectory
-    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
+    jdkFile: "/home/ortub/OpenJDK21U-jdk_x64_linux_hotspot_21.0.5_11.tar.gz"
 
 
 
