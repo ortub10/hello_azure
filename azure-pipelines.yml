@@ -41,7 +41,7 @@ steps:
   inputs:
     versionSpec: "21"
     jdkArchitectureOption: x64
-    jdkSourceOption: LocalDirectory
+   # jdkSourceOption: LocalDirectory
     jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
