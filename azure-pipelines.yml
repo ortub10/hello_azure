@@ -37,12 +37,12 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
 
-#- task: JavaToolInstaller@0
-#  inputs:
-#    versionSpec: "21"
-#    jdkArchitectureOption: x64
-#    jdkSourceOption: LocalDirectory
-#    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: "21"
+    jdkArchitectureOption: x64
+    jdkSourceOption: LocalDirectory
+    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
      
@@ -51,9 +51,9 @@ steps:
     dotnet build --configuration Release
   displayName: 'Build the project'
   
-#- task: SonarQubeAnalyze@6
-#  inputs:
-#    jdkversion: 'JAVA_HOME_21_X64'    
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_21_X64'    
           
 
 - task: DotNetCoreCLI@2
@@ -66,13 +66,13 @@ steps:
     versionEnvVar: 'buildVersion' 
 
 
-#- task: SonarQubePrepare@6
-#  inputs:
-#    SonarQube: 'SonarQube'
-#    scannerMode: 'MSBuild'
-#    organization: 'orgitlab'
-#    projectKey: 'orgitlab_hello'
-#    projectName: 'hello'
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    organization: 'orgitlab'
+    projectKey: 'orgitlab_hello'
+    projectName: 'hello'
 
 - task: DotNetCoreCLI@2
   inputs:
