@@ -30,19 +30,35 @@ steps:
   inputs:
     version: '23.x'
     
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    organization: 'orgitlab'
+    projectKey: 'orgitlab_hello'
+    projectName: 'hello'
+
     
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet Tool'
     
 - task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
+  
+ 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    displayName: 'Restore dependencies' 
+  
 
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: "21"
     jdkArchitectureOption: x64
     jdkSourceOption: LocalDirectory
-    jdkFile: "/home/ortub/azure_project/HelloWorld/jre-8u431-linux-x64.tar.gz"
+    jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
      
@@ -65,20 +81,6 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
 
-
-- task: SonarQubePrepare@6
-  inputs:
-    SonarQube: 'SonarQube'
-    scannerMode: 'MSBuild'
-    organization: 'orgitlab'
-    projectKey: 'orgitlab_hello'
-    projectName: 'hello'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
-    displayName: 'Restore dependencies'
 
     
 - script: |
