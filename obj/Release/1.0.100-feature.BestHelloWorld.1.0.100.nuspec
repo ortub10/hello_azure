@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>1.0.100-feature.BestHelloWorld</id>
+    <version>1.0.100</version>
+    <authors>BestHelloWorld</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="f1503e2fc3f9ffa66414048216a9537dce0d7188" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.runtimeconfig.json" target="lib/net8.0/BestHelloWorld.runtimeconfig.json" />
+    <file src="/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.dll" target="lib/net8.0/BestHelloWorld.dll" />
+  </files>
+</package>
