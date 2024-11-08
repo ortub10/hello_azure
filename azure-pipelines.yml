@@ -61,10 +61,14 @@ steps:
     jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
-     
+     /home/ortub/azure_project/HelloWorld
 
-- script: |
-    dotnet build --configuration Release
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
+    arguments: '--configuration Release'
   displayName: 'Build the project'
   
 - task: SonarQubeAnalyze@6
