@@ -1,0 +1,15 @@
+/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld
+/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.deps.json
+/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.runtimeconfig.json
+/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.dll
+/home/ortub/azure_project/HelloWorld/bin/Release/net8.0/BestHelloWorld.pdb
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.AssemblyInfoInputs.cache
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.AssemblyInfo.cs
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.csproj.CoreCompileInputs.cache
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.sourcelink.json
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.dll
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/refint/BestHelloWorld.dll
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.pdb
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/BestHelloWorld.genruntimeconfig.cache
+/home/ortub/azure_project/HelloWorld/obj/Release/net8.0/ref/BestHelloWorld.dll
