@@ -61,8 +61,6 @@ steps:
     jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
 
-     /home/ortub/azure_project/HelloWorld
-
 
 - task: DotNetCoreCLI@2
   inputs:
