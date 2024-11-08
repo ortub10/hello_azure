@@ -44,7 +44,13 @@ steps:
     jdkSourceOption: LocalDirectory
     jdkFile: "/home/ortub/jre-8u431-linux-x64.tar.gz"
 
-    
+
+- script: |
+    echo "Current directory: $(Build.SourcesDirectory)"
+    echo "Listing files in the current directory:"
+    ls -R $(Build.SourcesDirectory)
+  displayName: 'List all files in the source directory'
+     
 
 - script: |
     dotnet build --configuration Release
