@@ -49,7 +49,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
+    projects: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
     displayName: 'Restore dependencies' 
   
 
@@ -78,7 +78,7 @@ steps:
   condition: eq(variables['Build.SourceBranchName'], 'feature')
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '/home/ortub/azure_project/HelloWorld/BestHelloWorld.csproj'
     buildProperties: 'PackageIdPrefix=$(packageName).'  
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'buildVersion' 
